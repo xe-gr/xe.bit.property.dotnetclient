@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xe.bit.property.core", "..\Projects\xe.bit.property.core\xe.bit.property.core.csproj", "{515FC69C-1A29-4543-A411-C837F44AFFA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xe.bit.property.core.tests", "..\Tests\xe.bit.property.core.tests\xe.bit.property.core.tests.csproj", "{9618CAB3-94F3-4F57-811C-5DF52E55C8BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{515FC69C-1A29-4543-A411-C837F44AFFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515FC69C-1A29-4543-A411-C837F44AFFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515FC69C-1A29-4543-A411-C837F44AFFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515FC69C-1A29-4543-A411-C837F44AFFA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9618CAB3-94F3-4F57-811C-5DF52E55C8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9618CAB3-94F3-4F57-811C-5DF52E55C8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9618CAB3-94F3-4F57-811C-5DF52E55C8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9618CAB3-94F3-4F57-811C-5DF52E55C8BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {184B76E5-A160-428C-8D97-A5C907B2FE27}
+	EndGlobalSection
+EndGlobal
