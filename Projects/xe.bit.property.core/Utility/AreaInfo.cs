@@ -39,7 +39,7 @@ namespace xe.bit.property.core.Utility
 
 		public static bool IsAreaIdException(string areaId) => Exceptions.BinarySearch(areaId) >= 0;
 
-		public static bool IsAreaIdValid(string areaId) => AreaMap.ContainsKey(areaId);
+		public static bool IsAreaIdValid(string areaId) => !string.IsNullOrEmpty(areaId) && AreaMap.ContainsKey(areaId);
 
 		public static string GetMapLabelOfAreaId(string areaId)
 		{
