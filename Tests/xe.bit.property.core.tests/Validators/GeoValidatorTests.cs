@@ -22,5 +22,16 @@ namespace xe.bit.property.core.tests.Validators
 			Assert.Equal(1, result.Errors.Count);
 			Assert.Equal(string.Format(expectedMessage, geo.AreaId), result.Errors[0].ErrorMessage);
 		}
+
+		[Fact]
+		public void ValidationSuccessful()
+		{
+			var geo = new Geo { AreaId = "332-269" };
+			var validator = new GeoValidator();
+
+			var result = validator.Validate(geo);
+
+			Assert.True(result.IsValid);
+		}
 	}
 }
