@@ -100,6 +100,18 @@ namespace xe.bit.property.core.tests.Validators
 			Assert.True(results.IsValid);
 		}
 
+		[Fact]
+		public void ValidationSuccessfulWithoutAssets()
+		{
+			var list = new List<Asset>();
+
+			var validator = new AssetsValidator();
+
+			var results = validator.Validate(list);
+
+			Assert.True(results.IsValid);
+		}
+
 		private Asset CreateAsset(bool isPrimary)
 		{
 			return new Asset {Type = AssetType.IMAGE, Id = "id", Uri = "http://here.com/image.jpg", IsPrimary = isPrimary};

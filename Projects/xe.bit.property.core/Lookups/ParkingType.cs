@@ -1,6 +1,6 @@
 ﻿namespace xe.bit.property.core.Lookups
 {
-	public enum ParkingItemType
+	public enum ParkingType
 	{
 		CLOSED,
 		OPEN,

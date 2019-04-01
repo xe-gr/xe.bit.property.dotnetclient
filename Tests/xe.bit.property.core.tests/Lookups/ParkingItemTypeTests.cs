@@ -9,7 +9,7 @@ namespace xe.bit.property.core.tests.Lookups
 		public ParkingItemTypeTests()
 		{
 			Values = EnumValues;
-			Type = typeof(ParkingItemType);
+			Type = typeof(ParkingType);
 			Ignore = false;
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Validators;
 using xe.bit.property.core.Ads;
 using xe.bit.property.core.Errors;
 using xe.bit.property.core.Utility;
@@ -24,6 +25,18 @@ namespace xe.bit.property.core.Validators
 						.Equal(false)
 						.WithMessage(geo => string.Format(Messages.AreaIdIsException, geo.AreaId));
 				});
+		}
+
+		public void Validate (Geo geo, CustomContext context)
+		{
+			var results = Validate(geo);
+			if (!results.IsValid)
+			{
+				foreach (var error in results.Errors)
+				{
+					context.AddFailure(error);
+				}
+			}
 		}
 	}
 }

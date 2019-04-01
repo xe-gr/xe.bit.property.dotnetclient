@@ -6,7 +6,7 @@ namespace xe.bit.property.core.Ads
 {
 	public class BaseAd
 	{
-		public virtual ItemType Type { get; set; }
+		public virtual ItemType AdType { get; protected set; }
 		public virtual string RefId { get; set; }
 		public virtual string OwnerId { get; set; }
 		public virtual string MajorPhone { get; set; }
@@ -15,9 +15,9 @@ namespace xe.bit.property.core.Ads
 		public virtual string InternetText { get; set; }
 		public virtual string AddOnText { get; set; }
 		public virtual string BodyText { get; set; }
-		public virtual decimal Price { get; set; }
-		public virtual CurrencyCode Currency { get; set; }
-		public virtual TransactionFrequency Frequency { get; set; }
+		public virtual decimal? Price { get; set; }
+		public virtual CurrencyCode? Currency { get; set; }
+		public virtual TransactionFrequency? Frequency { get; set; }
 		public virtual TransactionType TransactionType { get; set; }
 		public virtual bool? IsOffer { get; set; }
 		public virtual bool? IsPromo { get; set; }

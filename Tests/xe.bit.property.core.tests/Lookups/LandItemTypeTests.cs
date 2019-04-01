@@ -2,7 +2,7 @@
 
 namespace xe.bit.property.core.tests.Lookups
 {
-	public class LandItemTypeTests : LookupWithFlagsTests
+	public class LandItemTypeTests : LookupTests
 	{
 		private static readonly string[] EnumValues = {"AGROTEMAXIO", "EKTASH", "OIKOPEDO"};
 
