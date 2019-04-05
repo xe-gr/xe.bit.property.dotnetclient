@@ -26,5 +26,8 @@
 		public const string HasParkingConstraint = "If HasParking is true, ParkingType must have a value";
 		public const string ResidenceSubTypeMustHaveValue = "If residence is APARTMENT, SubType must have a value";
 		public const string ResidenceSubTypeMustBeNull = "If residence is not APARTMENT, SubType must not be specified";
+		public const string RefIdCannotBeNullOrEmpty = "RefId cannot be null or empty";
+		public const string OwnerIdCannotBeNullOrEmpty = "OwnerId cannot be null or empty";
+		public const string MajorPhoneCannotBeNullOrEmpty = "Major phone cannot be null or empty";
 	}
 }
