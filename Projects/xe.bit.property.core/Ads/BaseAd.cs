@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using FluentValidation.Results;
 using xe.bit.property.core.Iso;
 using xe.bit.property.core.Lookups;
+using xe.bit.property.core.Utility;
 
 namespace xe.bit.property.core.Ads
 {
@@ -43,6 +45,11 @@ namespace xe.bit.property.core.Ads
 		public void ClearAssets()
 		{
 			Assets.Clear();
+		}
+
+		public virtual ValidationResult Validate()
+		{
+			return ValidationChain.ChainValidators(this);
 		}
 	}
 }

@@ -1,4 +1,7 @@
-﻿using xe.bit.property.core.Lookups;
+﻿using FluentValidation.Results;
+using xe.bit.property.core.Lookups;
+using xe.bit.property.core.Utility;
+using xe.bit.property.core.Validators;
 
 namespace xe.bit.property.core.Ads
 {
@@ -54,5 +57,9 @@ namespace xe.bit.property.core.Ads
 		public virtual decimal? SemiOpenSpacesArea { get; set; }
 		public virtual EnergyClass? EnergyClass { get; set; }
 
+		public override ValidationResult Validate()
+		{
+			return ValidationChain.ChainValidators(this, new ResidenceAdValidator().Validate(this));
+		}
 	}
 }
