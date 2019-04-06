@@ -13,6 +13,7 @@ namespace xe.bit.property.core.Request
 		public virtual string StoreId { get; set; }
 		public virtual string Trademark { get; set; }
 		public virtual bool? SkipAssets { get; set; }
+		public virtual PackagePolicy Policy { get; set; } = PackagePolicy.INCREMENTAL;
 
 		public virtual List<BaseAd> Ads { get; protected set; } = new List<BaseAd>();
 
