@@ -14,7 +14,7 @@ namespace xe.bit.property.core.tests.Validators
 		[InlineData(FieldToVerify.MajorPhone, "", Messages.MajorPhoneCannotBeNullOrEmpty)]
 		[InlineData(FieldToVerify.RefId, null, Messages.RefIdCannotBeNullOrEmpty)]
 		[InlineData(FieldToVerify.RefId, "", Messages.RefIdCannotBeNullOrEmpty)]
-		public void VerifyRefId(FieldToVerify field, string value, string expected)
+		public void VerifyField(FieldToVerify field, string value, string expected)
 		{
 			var ad = CreateAd();
 			SetValue(ad, value, field);
