@@ -29,5 +29,8 @@
 		public const string RefIdCannotBeNullOrEmpty = "RefId cannot be null or empty";
 		public const string OwnerIdCannotBeNullOrEmpty = "OwnerId cannot be null or empty";
 		public const string MajorPhoneCannotBeNullOrEmpty = "Major phone cannot be null or empty";
+		public const string AuthTokenCannotBeNullOrEmpty = "XE auth token cannot be null or empty";
+		public const string SchemaVersionCannotBeNullOrEmpty = "Schema version cannot be null or empty";
+		public const string PackageIdCannotBeNullOrEmpty = "Package ID cannot be null or empty";
 	}
 }
