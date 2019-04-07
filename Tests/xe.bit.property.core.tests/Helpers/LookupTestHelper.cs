@@ -19,7 +19,7 @@ namespace xe.bit.property.core.tests.Helpers
 
 		public static void VerifyFlags(Type enumeration, string[] expectedValues)
 		{
-			var power = 0;
+			var power = 1;
 
 			foreach (var value in expectedValues)
 			{
@@ -28,7 +28,7 @@ namespace xe.bit.property.core.tests.Helpers
 				Assert.True(done);
 				Assert.Equal(power, (int) o);
 
-				power = power > 0 ? power *= 2 : 1;
+				power *= 2;
 			}
 		}
 	}

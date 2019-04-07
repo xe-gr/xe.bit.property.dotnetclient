@@ -5,18 +5,18 @@ namespace xe.bit.property.core.Lookups
 	[Flags]
 	public enum ResidenceLevel
 	{
-		L0 = 0,
-		L1 = 1,
-		L2 = 2,
-		L3 = 4,
-		L4 = 8,
-		L5 = 16,
-		L6 = 32,
-		L7 = 64,
-		L8 = 128,
-		LH = 256,
-		LHH = 512,
-		S1 = 1024,
-		SH = 2048
+		L0 = 1,
+		L1 = 2,
+		L2 = 4,
+		L3 = 8,
+		L4 = 16,
+		L5 = 32,
+		L6 = 64,
+		L7 = 128,
+		L8 = 256,
+		LH = 512,
+		LHH = 1024,
+		S1 = 2048,
+		SH = 4096
 	}
 }

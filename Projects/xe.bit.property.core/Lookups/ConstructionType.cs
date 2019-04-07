@@ -5,14 +5,14 @@ namespace xe.bit.property.core.Lookups
 	[Flags]
 	public enum ConstructionType
 	{
-		LOFT = 0,
-		LYOMENO = 1,
-		NEOKLASIKO = 2,
-		PRESERVED = 4,
-		PROKAT = 8,
-		ROCK = 16,
-		STUDIO = 32,
-		TRADITIONAL = 64,
-		VILA = 128
+		LOFT = 1,
+		LYOMENO = 2,
+		NEOKLASIKO = 4,
+		PRESERVED = 8,
+		PROKAT = 16,
+		ROCK = 32,
+		STUDIO = 64,
+		TRADITIONAL = 128,
+		VILA = 256
 	}
 }

@@ -5,9 +5,9 @@ namespace xe.bit.property.core.Lookups
 	[Flags]
 	public enum ViewType
 	{
-		FOREST = 0,
-		MOUNTAIN = 1,
-		SEA = 2,
-		UNLIMITED = 4
+		FOREST = 1,
+		MOUNTAIN = 2,
+		SEA = 4,
+		UNLIMITED = 8
 	}
 }
