@@ -23,5 +23,10 @@ namespace xe.bit.property.core.Utility
 				.Union(geoResults.Errors)
 				.Union(assetsValidator.Errors));
 		}
+
+		public static ValidationResult Chain(ValidationResult result1, ValidationResult result2)
+		{
+			return new ValidationResult(result1.Errors.Union(result2.Errors));
+		}
 	}
 }

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FluentValidation.Results;
 using xe.bit.property.core.Iso;
 using xe.bit.property.core.Lookups;
+using xe.bit.property.core.Serializers.Interfaces;
 using xe.bit.property.core.Utility;
 
 namespace xe.bit.property.core.Ads
@@ -12,7 +14,7 @@ namespace xe.bit.property.core.Ads
 		public virtual string RefId { get; set; }
 		public virtual string OwnerId { get; set; }
 		public virtual string MajorPhone { get; set; }
-		public virtual string DepartmentOnCategory { get; protected set; } = "Real Estate";
+		public virtual string DepartmentOnCategory { get; set; } = "Real Estate";
 		public virtual List<string> OtherPhones { get; protected set; } = new List<string>();
 		public virtual string InternetText { get; set; }
 		public virtual string AddOnText { get; set; }
@@ -24,8 +26,9 @@ namespace xe.bit.property.core.Ads
 		public virtual bool? IsOffer { get; set; }
 		public virtual bool? IsPromo { get; set; }
 		public virtual bool? IsNegotiable { get; set; }
-		public virtual Geo Geo { get; protected set; } = new Geo();
-		public virtual List<Asset> Assets { get; protected set; } = new List<Asset>();
+		public virtual Geo Geo { get; } = new Geo();
+		public virtual List<Asset> Assets { get; } = new List<Asset>();
+		public virtual IAddSerializer Serializer { get; }
 
 		public void AddOtherPhone(string otherPhone)
 		{
@@ -50,6 +53,11 @@ namespace xe.bit.property.core.Ads
 		public virtual ValidationResult Validate()
 		{
 			return ValidationChain.ChainValidators(this);
+		}
+
+		public virtual string Serialize()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

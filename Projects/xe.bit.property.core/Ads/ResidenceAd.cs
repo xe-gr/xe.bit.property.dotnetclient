@@ -1,5 +1,7 @@
 ﻿using FluentValidation.Results;
 using xe.bit.property.core.Lookups;
+using xe.bit.property.core.Serializers;
+using xe.bit.property.core.Serializers.Interfaces;
 using xe.bit.property.core.Utility;
 using xe.bit.property.core.Validators;
 
@@ -56,10 +58,16 @@ namespace xe.bit.property.core.Ads
 		public virtual bool? HasSemiOpenSpaces { get; set; }
 		public virtual decimal? SemiOpenSpacesArea { get; set; }
 		public virtual EnergyClass? EnergyClass { get; set; }
+		public override IAddSerializer Serializer { get; } = new XmlResidenceAdSerializer();
 
 		public override ValidationResult Validate()
 		{
 			return ValidationChain.ChainValidators(this, new ResidenceAdValidator().Validate(this));
+		}
+
+		public override string Serialize()
+		{
+			return Serializer.Serialize(this);
 		}
 	}
 }
