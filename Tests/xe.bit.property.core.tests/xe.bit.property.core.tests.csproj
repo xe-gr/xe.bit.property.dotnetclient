@@ -24,4 +24,10 @@
     <ProjectReference Include="..\..\Projects\xe.bit.property.core\xe.bit.property.core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Fixtures\AdResidenceAdFixture.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

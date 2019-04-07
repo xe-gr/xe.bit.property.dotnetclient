@@ -1,0 +1,70 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<AddItemsRequest>
+<Package.xeAuthToken>token</Package.xeAuthToken>
+<Package.schemaVersion>1.1</Package.schemaVersion>
+<Package.id>id</Package.id>
+<Package.timestamp>2019-04-07T22:10</Package.timestamp>
+<Package.trademark>trademark</Package.trademark>
+<Package.skipAssets>False</Package.skipAssets>
+<Package.policy>RENEW ALL STOCK</Package.policy>
+﻿<Item type="re_residence" refId="ref id"><Item.ownerId>owner id</Item.ownerId>
+<Item.majorPhone>major phone</Item.majorPhone>
+<Item.departmentOnCategory>Real Estate</Item.departmentOnCategory>
+<Field>
+<Name>Item.type</Name>
+<Value>APARTMENT</Value>
+</Field>
+<Field>
+<Name>Item.subtype</Name>
+<Value>LOFT, SINGLEROOM</Value>
+</Field>
+<Field>
+<Name>Item.area</Name>
+<Value>1000,32</Value>
+</Field>
+<Field>
+<Name>Item.level</Name>
+<Value>L0</Value>
+</Field>
+<Field>
+<Name>Item.constructionType</Name>
+<Value>NEOKLASIKO</Value>
+</Field>
+<Field>
+<Name>Item.condition</Name>
+<Value>USED</Value>
+</Field>
+<Field>
+<Name>Item.constructionYear</Name>
+<Value>1970</Value>
+</Field>
+<Field>
+<Name>Item.masterBedrooms</Name>
+<Value>2</Value>
+</Field>
+<Field>
+<Name>Item.hasParking</Name>
+<Value>0</Value>
+</Field>
+<Field>
+<Name>Item.parkingType</Name>
+<Value>CLOSED</Value>
+</Field>
+<Field>
+<Name>Geo.areaId</Name>
+<Value>59-41</Value>
+</Field>
+<Field>
+<Name>Geo.longitude</Name>
+<Value>2.2</Value>
+</Field>
+<Field>
+<Name>Geo.latitude</Name>
+<Value>1.1</Value>
+</Field>
+<Field>
+<Name>Transaction.type</Name>
+<Value>SELL.NORMAL</Value>
+</Field>
+</Item>
+</AddItemsRequest>

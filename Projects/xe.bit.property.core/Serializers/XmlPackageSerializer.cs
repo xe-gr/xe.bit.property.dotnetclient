@@ -22,7 +22,7 @@ namespace xe.bit.property.core.Serializers
 					.Element("Package.timestamp", package.Timestamp.ToString(("yyyy-MM-ddTHH\\:mm")))
 					.Element("Package.trademark", package.Trademark)
 					.Element("Package.skipAssets", package.SkipAssets)
-					.Element("Package.policy", package.Policy.ToString());
+					.Element("Package.policy", package.Policy);
 
 				foreach (var ad in package.Ads)
 				{
