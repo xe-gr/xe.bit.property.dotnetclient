@@ -45,17 +45,17 @@ namespace xe.bit.property.core.Serializers
 			{
 				writer
 					.Element("Asset")
-					.Field("Asset.type", asset.Type)
-					.Field("Asset.id", asset.Id)
-					.Field("Asset.fileType", asset.FileType)
-					.Field("Asset.status", asset.Status)
-					.Field("Asset.isPrimary", asset.IsPrimary)
-					.Field("Asset.caption", asset.Caption)
-					.Field("Asset.order", asset.Order);
+					.Element("Asset.type", asset.Type)
+					.Element("Asset.id", asset.Id)
+					.Element("Asset.fileType", asset.FileType)
+					.Element("Asset.status", asset.Status)
+					.Element("Asset.isPrimary", asset.IsPrimary)
+					.Element("Asset.caption", asset.Caption)
+					.Element("Asset.order", asset.Order);
 
 				if (asset.Type == AssetType.IMAGE)
 				{
-					writer.Field("Asset.uri", asset.Uri);
+					writer.Element("Asset.uri", asset.Uri);
 				}
 				else
 				{

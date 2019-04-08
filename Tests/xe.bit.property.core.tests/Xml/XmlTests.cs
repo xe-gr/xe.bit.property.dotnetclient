@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using xe.bit.property.core.Ads;
 using xe.bit.property.core.Lookups;
 using xe.bit.property.core.Request;
@@ -45,12 +46,18 @@ namespace xe.bit.property.core.tests.xml
 				ParkingType = ParkingType.CLOSED
 			};
 
+			ad.AddAsset(new Asset
+			{
+				Type = AssetType.IMAGE, Id = "1", FileType = AssetFileType.JPEG, IsPrimary = true, Order = 1,
+				Status = AssetStatus.ACTIVE, LocalFileName = "local\\image.jpeg"
+			});
+
 			p.AddItem(ad);
 
 			var str = p.Serialize();
 			_out.WriteLine(str);
 
-			Assert.Equal(File.ReadAllText("Fixtures\\AdResidenceAdFixture.txt"), str.Substring(0, str.Length-2));
+			Assert.Equal(File.ReadAllText("Fixtures\\AdResidenceAdFixture.txt", Encoding.UTF8), str.Substring(1, str.Length-3));	// Ignore BOM and end CRLF marks.
 
 		}
 	}

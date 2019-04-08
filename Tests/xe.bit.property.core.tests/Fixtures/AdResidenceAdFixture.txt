@@ -1,4 +1,4 @@
-﻿﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <AddItemsRequest>
 <Package.xeAuthToken>token</Package.xeAuthToken>
 <Package.schemaVersion>1.1</Package.schemaVersion>
@@ -66,5 +66,14 @@
 <Name>Transaction.type</Name>
 <Value>SELL.NORMAL</Value>
 </Field>
+<Asset>
+<Asset.type>IMAGE</Asset.type>
+<Asset.id>1</Asset.id>
+<Asset.fileType>jpg</Asset.fileType>
+<Asset.status>ACTIVE</Asset.status>
+<Asset.isPrimary>True</Asset.isPrimary>
+<Asset.order>1</Asset.order>
+<Asset.uri>image.jpeg</Asset.uri>
+</Asset>
 </Item>
 </AddItemsRequest>

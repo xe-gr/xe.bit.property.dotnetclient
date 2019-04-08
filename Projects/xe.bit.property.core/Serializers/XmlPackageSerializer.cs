@@ -15,7 +15,7 @@ namespace xe.bit.property.core.Serializers
 			using (var writer = XmlWriter.Create(ms))
 			{
 				Serialize(package, isAddRequest, writer);
-				return Encoding.Default.GetString(ms.ToArray());
+				return Encoding.UTF8.GetString(ms.ToArray());
 			}
 		}
 
