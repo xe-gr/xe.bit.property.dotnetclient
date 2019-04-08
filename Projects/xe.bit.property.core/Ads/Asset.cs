@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using xe.bit.property.core.Lookups;
 
 namespace xe.bit.property.core.Ads
@@ -14,6 +15,19 @@ namespace xe.bit.property.core.Ads
 		public virtual int Order { get; set; }
 		public virtual string Uri { get; set; }
 		public virtual Dictionary<string, string> Properties { get; protected set; } = new Dictionary<string, string>();
+		public virtual string LocalFileName
+		{
+			get => _localFileName;
+			set
+			{
+				_localFileName = value;
+				var fi = new FileInfo(_localFileName);
+				Uri = fi.Name;
+			}
+
+		}
+
+		private string _localFileName;
 
 		public void AddProperty(string key, string value)
 		{

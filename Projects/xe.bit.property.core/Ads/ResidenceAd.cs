@@ -65,9 +65,9 @@ namespace xe.bit.property.core.Ads
 			return ValidationChain.ChainValidators(this, new ResidenceAdValidator().Validate(this));
 		}
 
-		public override string Serialize()
+		public override string Serialize(bool skipAssets)
 		{
-			return Serializer.Serialize(this);
+			return Serializer.Serialize(this, skipAssets);
 		}
 	}
 }

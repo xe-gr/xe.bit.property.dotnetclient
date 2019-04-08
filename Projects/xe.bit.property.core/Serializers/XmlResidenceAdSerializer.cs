@@ -8,7 +8,7 @@ namespace xe.bit.property.core.Serializers
 {
 	public class XmlResidenceAdSerializer : XmlBaseSerializer
 	{
-		public override string Serialize(BaseAd ad)
+		public override string Serialize(BaseAd ad, bool skipAssets)
 		{
 			using (var ms = new MemoryStream())
 			using (var writer = XmlWriter.Create(ms, new XmlWriterSettings { ConformanceLevel = ConformanceLevel.Fragment, OmitXmlDeclaration = true }))
@@ -76,6 +76,10 @@ namespace xe.bit.property.core.Serializers
 
 				SerializeGeo(writer, ad);
 				SerializeFinancial(writer, ad);
+				if (!skipAssets)
+				{
+					SerializeAssets(writer, ad);
+				}
 
 				writer.CloseElement();
 

@@ -55,7 +55,7 @@ namespace xe.bit.property.core.Ads
 			return ValidationChain.ChainValidators(this);
 		}
 
-		public virtual string Serialize()
+		public virtual string Serialize(bool skipAssets)
 		{
 			throw new NotImplementedException();
 		}
