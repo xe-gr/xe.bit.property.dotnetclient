@@ -53,13 +53,16 @@ namespace xe.bit.property.core.Request
 
 		public string Serialize()
 		{
-			var result = Validate();
-			if (!result.IsValid)
-			{
-				throw new InvalidOperationException("Invalid package. Run Validate() to see the errors");
-			}
+			ValidatePackage();
 
 			return Serializer.Serialize(this, IsAddRequest);
+		}
+
+		public void Serialize(string fileName)
+		{
+			ValidatePackage();
+
+			Serializer.Serialize(this, IsAddRequest, fileName);
 		}
 
 		public static Package CreatePackage(string xeAuthToken, PackagePolicy policy, bool isAddRequest)
@@ -70,6 +73,15 @@ namespace xe.bit.property.core.Request
 		public static Package CreatePackage(string xeAuthToken, string id, PackagePolicy policy, bool isAddRequest)
 		{
 			return new Package {Id = id, IsAddRequest = isAddRequest, XeAuthToken = xeAuthToken, Policy = policy};
+		}
+
+		private void ValidatePackage()
+		{
+			var result = Validate();
+			if (!result.IsValid)
+			{
+				throw new InvalidOperationException("Invalid package. Run Validate() to see the errors");
+			}
 		}
 	}
 }
