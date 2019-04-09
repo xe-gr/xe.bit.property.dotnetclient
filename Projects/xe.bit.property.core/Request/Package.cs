@@ -78,8 +78,10 @@ namespace xe.bit.property.core.Request
 			using (var ms = new MemoryStream())
 			using (var archive = ZipArchive.Create())
 			{
+				var fi = new FileInfo(packedFileName);
+				
 				Serializer.Serialize(ms, this, IsAddRequest);
-				archive.AddEntry("package.xml", ms, true);
+				archive.AddEntry(fi.Name.Replace(fi.Extension, ".xml"), ms, true);
 
 				if (SkipAssets.HasValue && !SkipAssets.Value)
 				{
@@ -87,7 +89,16 @@ namespace xe.bit.property.core.Request
 					foreach (var asset in ad.Assets.Where(x => x.Type == AssetType.IMAGE))
 					{
 						var name = string.IsNullOrEmpty(asset.LocalFileName) ? Path.Combine(directoryWithImages, asset.Uri) : asset.LocalFileName;
-						archive.AddEntry(asset.Uri, name);
+
+						try
+						{
+							archive.AddEntry(asset.Uri, name);
+						}
+						catch (FileNotFoundException)
+						{
+							throw new InvalidOperationException($"Asset located at [{name}] was not found");
+						}
+						
 					}
 				}
 
