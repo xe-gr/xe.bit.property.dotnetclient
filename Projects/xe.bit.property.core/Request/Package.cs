@@ -1,7 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using FluentValidation.Results;
+using SharpCompress.Archives;
+using SharpCompress.Archives.Zip;
+using SharpCompress.Common;
 using xe.bit.property.core.Ads;
+using xe.bit.property.core.Lookups;
 using xe.bit.property.core.Serializers;
 using xe.bit.property.core.Serializers.Interfaces;
 using xe.bit.property.core.Utility;
@@ -63,6 +69,30 @@ namespace xe.bit.property.core.Request
 			ValidatePackage();
 
 			Serializer.Serialize(this, IsAddRequest, fileName);
+		}
+
+		public void Pack(string directoryWithImages, string packedFileName)
+		{
+			ValidatePackage();
+
+			using (var ms = new MemoryStream())
+			using (var archive = ZipArchive.Create())
+			{
+				Serializer.Serialize(ms, this, IsAddRequest);
+				archive.AddEntry("package.xml", ms, true);
+
+				if (SkipAssets.HasValue && !SkipAssets.Value)
+				{
+					foreach (var ad in Ads)
+					foreach (var asset in ad.Assets.Where(x => x.Type == AssetType.IMAGE))
+					{
+						var name = string.IsNullOrEmpty(asset.LocalFileName) ? Path.Combine(directoryWithImages, asset.Uri) : asset.LocalFileName;
+						archive.AddEntry(asset.Uri, name);
+					}
+				}
+
+				archive.SaveTo(packedFileName, CompressionType.Deflate);
+			}
 		}
 
 		public static Package CreatePackage(string xeAuthToken, PackagePolicy policy, bool isAddRequest)

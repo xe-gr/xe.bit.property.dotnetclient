@@ -9,6 +9,14 @@ namespace xe.bit.property.core.Serializers
 {
 	public class XmlPackageSerializer : ISerializer
 	{
+		public void Serialize(Stream stream, Package package, bool isAddRequest)
+		{
+			using (var writer = XmlWriter.Create(stream))
+			{
+				Serialize(package, isAddRequest, writer);
+			}
+		}
+
 		public string Serialize(Package package, bool isAddRequest)
 		{
 			using (var ms = new MemoryStream())

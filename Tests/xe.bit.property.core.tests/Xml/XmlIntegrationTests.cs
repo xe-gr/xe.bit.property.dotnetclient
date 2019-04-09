@@ -1,26 +1,16 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 using xe.bit.property.core.Ads;
 using xe.bit.property.core.Lookups;
 using xe.bit.property.core.Request;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace xe.bit.property.core.tests.xml
+namespace xe.bit.property.core.tests.Xml
 {
-	public class XmlTests
+	public class XmlIntegrationTests
 	{
-		private readonly ITestOutputHelper _out;
-
-		public XmlTests(ITestOutputHelper testOutputHelper)
+		//[Fact]	This is an integration test and should remain commented out in source control.
+		public void IntegrationTest()
 		{
-			_out = testOutputHelper;
-		}
-
-		[Fact]
-		public void VerifyPackageWithResidenceAdXmlSerialization()
-		{		
 			var ad = new ResidenceAd
 			{
 				RefId = "ref id",
@@ -34,7 +24,7 @@ namespace xe.bit.property.core.tests.xml
 				ConstructionYear = 1970,
 				ConstructionType = ConstructionType.NEOKLASIKO,
 				MasterBedrooms = 2,
-				Geo = {AreaId = "59-41", Latitude = 1.1m, Longitude = 2.2m},
+				Geo = { AreaId = "59-41", Latitude = 1.1m, Longitude = 2.2m },
 				HasParking = false,
 				ParkingType = ParkingType.CLOSED
 			};
@@ -47,7 +37,7 @@ namespace xe.bit.property.core.tests.xml
 				IsPrimary = true,
 				Order = 1,
 				Status = AssetStatus.ACTIVE,
-				LocalFileName = "local\\image.jpeg"
+				LocalFileName = "d:\\test.jpeg"
 			});
 
 			var p = Package.CreatePackage("token", "id", PackagePolicy.RENEW_ALL_STOCK, true)
@@ -57,10 +47,7 @@ namespace xe.bit.property.core.tests.xml
 			p.Trademark = "trademark";
 			p.SkipAssets = false;
 
-			var str = p.Serialize();
-			_out.WriteLine(str);
-
-			Assert.Equal(File.ReadAllText("Fixtures\\AdResidenceAdFixture.txt", Encoding.UTF8), str.Substring(1, str.Length-3));	// Ignore BOM and end CRLF marks.
+			p.Pack(null, "d:\\packed.zip");
 		}
 	}
 }

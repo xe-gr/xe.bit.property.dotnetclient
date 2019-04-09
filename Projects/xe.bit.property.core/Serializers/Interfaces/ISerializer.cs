@@ -1,4 +1,5 @@
-﻿using xe.bit.property.core.Request;
+﻿using System.IO;
+using xe.bit.property.core.Request;
 
 namespace xe.bit.property.core.Serializers.Interfaces
 {
@@ -6,5 +7,6 @@ namespace xe.bit.property.core.Serializers.Interfaces
 	{
 		string Serialize(Package package, bool isAddRequest);
 		void Serialize(Package package, bool isAddRequest, string fileName);
+		void Serialize(Stream stream, Package package, bool isAddRequest);
 	}
 }
