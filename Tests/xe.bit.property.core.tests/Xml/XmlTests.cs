@@ -20,14 +20,7 @@ namespace xe.bit.property.core.tests.xml
 
 		[Fact]
 		public void VerifyPackageWithResidenceAdXmlSerialization()
-		{
-			var p = new Package
-			{
-				XeAuthToken = "token", Id = "id", Trademark = "trademark", SkipAssets = false,
-				Policy = PackagePolicy.RENEW_ALL_STOCK,
-				Timestamp = new DateTime(2019, 04, 07, 22, 10, 00, DateTimeKind.Utc)
-			};
-
+		{		
 			var ad = new ResidenceAd
 			{
 				RefId = "ref id",
@@ -48,11 +41,21 @@ namespace xe.bit.property.core.tests.xml
 
 			ad.AddAsset(new Asset
 			{
-				Type = AssetType.IMAGE, Id = "1", FileType = AssetFileType.JPEG, IsPrimary = true, Order = 1,
-				Status = AssetStatus.ACTIVE, LocalFileName = "local\\image.jpeg"
+				Type = AssetType.IMAGE,
+				Id = "1",
+				FileType = AssetFileType.JPEG,
+				IsPrimary = true,
+				Order = 1,
+				Status = AssetStatus.ACTIVE,
+				LocalFileName = "local\\image.jpeg"
 			});
 
-			p.AddItem(ad);
+			var p = Package.CreatePackage("token", "id", PackagePolicy.RENEW_ALL_STOCK, true)
+				.AddClassified(ad);
+
+			p.Timestamp = new DateTime(2019, 04, 07, 22, 10, 00, DateTimeKind.Utc);
+			p.Trademark = "trademark";
+			p.SkipAssets = false;
 
 			var str = p.Serialize();
 			_out.WriteLine(str);

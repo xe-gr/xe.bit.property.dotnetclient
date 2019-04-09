@@ -25,14 +25,18 @@ namespace xe.bit.property.core.Request
 
 		public ISerializer Serializer { get; } = new XmlPackageSerializer();
 
-		public void AddItem(BaseAd ad)
+		public Package AddClassified(BaseAd ad)
 		{
 			Ads.Add(ad);
+
+			return this;
 		}
 
-		public void ClearItems()
+		public Package ClearClassifieds()
 		{
 			Ads.Clear();
+
+			return this;
 		}
 
 		public ValidationResult Validate()
@@ -56,6 +60,16 @@ namespace xe.bit.property.core.Request
 			}
 
 			return Serializer.Serialize(this, IsAddRequest);
+		}
+
+		public static Package CreatePackage(string xeAuthToken, PackagePolicy policy, bool isAddRequest)
+		{
+			return CreatePackage(xeAuthToken, $"{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid():N}", policy, isAddRequest);
+		}
+
+		public static Package CreatePackage(string xeAuthToken, string id, PackagePolicy policy, bool isAddRequest)
+		{
+			return new Package {Id = id, IsAddRequest = isAddRequest, XeAuthToken = xeAuthToken, Policy = policy};
 		}
 	}
 }
