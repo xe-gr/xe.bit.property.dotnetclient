@@ -2,7 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Authors>xe.gr</Authors>
+    <Authors>Xyrisi Eukairia</Authors>
+    <PackageProjectUrl>https://developers.xe.gr/apis/bit/property/1.4.1/</PackageProjectUrl>
+    <Description>This is a .Net core client that creates property packages for the xe.gr bit API.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
