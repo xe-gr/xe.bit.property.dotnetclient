@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml;
 using xe.bit.property.core.Ads;
 using xe.bit.property.core.Utility.Xml;
@@ -85,7 +86,7 @@ namespace xe.bit.property.core.Serializers
 
 				writer.Flush();
 				writer.Close();
-				return System.Text.Encoding.Default.GetString(ms.ToArray());
+				return new UTF8Encoding(false).GetString(ms.ToArray());
 			}
 		}
 	}

@@ -23,13 +23,13 @@ namespace xe.bit.property.core.Serializers
 			using (var writer = XmlWriter.Create(ms))
 			{
 				Serialize(package, isAddRequest, writer);
-				return Encoding.UTF8.GetString(ms.ToArray());
+				return new UTF8Encoding(false).GetString(ms.ToArray());
 			}
 		}
 
 		public void Serialize(IPackage package, bool isAddRequest, string fileName)
 		{
-			using (var fs = new StreamWriter(fileName, false, Encoding.UTF8))
+			using (var fs = new StreamWriter(fileName, false, new UTF8Encoding(false)))
 			using (var writer = XmlWriter.Create(fs))
 			{
 				Serialize(package, isAddRequest, writer);
