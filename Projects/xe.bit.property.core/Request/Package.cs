@@ -8,6 +8,7 @@ using SharpCompress.Archives.Zip;
 using SharpCompress.Common;
 using xe.bit.property.core.Ads;
 using xe.bit.property.core.Lookups;
+using xe.bit.property.core.Request.Interfaces;
 using xe.bit.property.core.Serializers;
 using xe.bit.property.core.Serializers.Interfaces;
 using xe.bit.property.core.Utility;
@@ -15,7 +16,7 @@ using xe.bit.property.core.Validators;
 
 namespace xe.bit.property.core.Request
 {
-	public class Package
+	public class Package : IPackage
 	{
 		public virtual bool IsAddRequest { get; set; } = true;
 		public virtual string XeAuthToken { get; set; }
@@ -31,14 +32,14 @@ namespace xe.bit.property.core.Request
 
 		public ISerializer Serializer { get; } = new XmlPackageSerializer();
 
-		public Package AddClassified(BaseAd ad)
+		public IPackage AddClassified(BaseAd ad)
 		{
 			Ads.Add(ad);
 
 			return this;
 		}
 
-		public Package ClearClassifieds()
+		public IPackage ClearClassifieds()
 		{
 			Ads.Clear();
 
@@ -106,12 +107,12 @@ namespace xe.bit.property.core.Request
 			}
 		}
 
-		public static Package CreatePackage(string xeAuthToken, PackagePolicy policy, bool isAddRequest)
+		public static IPackage CreatePackage(string xeAuthToken, PackagePolicy policy, bool isAddRequest)
 		{
 			return CreatePackage(xeAuthToken, $"{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid():N}", policy, isAddRequest);
 		}
 
-		public static Package CreatePackage(string xeAuthToken, string id, PackagePolicy policy, bool isAddRequest)
+		public static IPackage CreatePackage(string xeAuthToken, string id, PackagePolicy policy, bool isAddRequest)
 		{
 			return new Package {Id = id, IsAddRequest = isAddRequest, XeAuthToken = xeAuthToken, Policy = policy};
 		}

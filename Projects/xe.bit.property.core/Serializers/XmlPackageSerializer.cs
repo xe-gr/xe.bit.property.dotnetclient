@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Xml;
-using xe.bit.property.core.Request;
+using xe.bit.property.core.Request.Interfaces;
 using xe.bit.property.core.Serializers.Interfaces;
 using xe.bit.property.core.Utility.Xml;
 
@@ -9,7 +9,7 @@ namespace xe.bit.property.core.Serializers
 {
 	public class XmlPackageSerializer : ISerializer
 	{
-		public void Serialize(Stream stream, Package package, bool isAddRequest)
+		public void Serialize(Stream stream, IPackage package, bool isAddRequest)
 		{
 			using (var writer = XmlWriter.Create(stream))
 			{
@@ -17,7 +17,7 @@ namespace xe.bit.property.core.Serializers
 			}
 		}
 
-		public string Serialize(Package package, bool isAddRequest)
+		public string Serialize(IPackage package, bool isAddRequest)
 		{
 			using (var ms = new MemoryStream())
 			using (var writer = XmlWriter.Create(ms))
@@ -27,7 +27,7 @@ namespace xe.bit.property.core.Serializers
 			}
 		}
 
-		public void Serialize(Package package, bool isAddRequest, string fileName)
+		public void Serialize(IPackage package, bool isAddRequest, string fileName)
 		{
 			using (var fs = new StreamWriter(fileName, false, Encoding.UTF8))
 			using (var writer = XmlWriter.Create(fs))
@@ -36,7 +36,7 @@ namespace xe.bit.property.core.Serializers
 			}
 		}
 
-		private void Serialize(Package package, bool isAddRequest, XmlWriter writer)
+		private void Serialize(IPackage package, bool isAddRequest, XmlWriter writer)
 		{
 			writer
 				.StartDocument()

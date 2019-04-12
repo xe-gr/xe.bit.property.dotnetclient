@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using xe.bit.property.core.Errors;
-using xe.bit.property.core.Request;
+using xe.bit.property.core.Request.Interfaces;
 
 namespace xe.bit.property.core.Validators
 {
-	public class PackageValidator : AbstractValidator<Package>
+	public class PackageValidator : AbstractValidator<IPackage>
 	{
 		public PackageValidator()
 		{

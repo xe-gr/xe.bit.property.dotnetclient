@@ -1,9 +1,10 @@
 ﻿using System;
 using RestSharp;
+using xe.bit.property.core.Request.Interfaces;
 
 namespace xe.bit.property.core.Request
 {
-	public class Client
+	public class Client : IClient
 	{
 		public void PostToBit(string packageFile, string userName, string password, bool isAddRequest)
 		{

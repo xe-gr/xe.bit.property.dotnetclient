@@ -8,7 +8,7 @@ namespace xe.bit.property.core.tests.Xml
 {
 	public class XmlIntegrationTests
 	{
-		[Fact]	//This is an integration test and should remain commented out in source control.
+		//[Fact]	//This is an integration test and should remain commented out in source control.
 		public void IntegrationTest()
 		{
 			var ad = new ResidenceAd
