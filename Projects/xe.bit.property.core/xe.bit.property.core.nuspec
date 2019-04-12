@@ -16,6 +16,7 @@
     <dependencies>
       <dependency id="FluentValidation" version="8.2.2" />
       <dependency id="SharpCompress" version="0.23.0" />
+      <dependency id="RestSharp" version="106.6.9" />
     </dependencies>
   </metadata>
 </package>
