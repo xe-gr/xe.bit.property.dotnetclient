@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<AddItemsRequest>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<AddItemsRequest xmlns="http://www.xe.gr">
 <Package.xeAuthToken>token</Package.xeAuthToken>
 <Package.schemaVersion>1.1</Package.schemaVersion>
 <Package.id>id</Package.id>
@@ -7,9 +7,11 @@
 <Package.trademark>trademark</Package.trademark>
 <Package.skipAssets>False</Package.skipAssets>
 <Package.policy>RENEW ALL STOCK</Package.policy>
-﻿<Item type="re_residence" refId="ref id"><Item.ownerId>owner id</Item.ownerId>
+﻿<Item type="re_residence" refId="ref id">
+<Item.ownerId>owner id</Item.ownerId>
 <Item.majorPhone>major phone</Item.majorPhone>
 <Item.departmentOnCategory>Real Estate</Item.departmentOnCategory>
+<Transaction.type>SELL.NORMAL</Transaction.type>
 <Field>
 <Name>Item.type</Name>
 <Value>APARTMENT</Value>
@@ -61,10 +63,6 @@
 <Field>
 <Name>Geo.latitude</Name>
 <Value>1.1</Value>
-</Field>
-<Field>
-<Name>Transaction.type</Name>
-<Value>SELL.NORMAL</Value>
 </Field>
 <Asset>
 <Asset.type>IMAGE</Asset.type>

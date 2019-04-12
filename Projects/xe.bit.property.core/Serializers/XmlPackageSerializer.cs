@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml;
 using xe.bit.property.core.Request.Interfaces;
@@ -30,7 +31,7 @@ namespace xe.bit.property.core.Serializers
 		public void Serialize(IPackage package, bool isAddRequest, string fileName)
 		{
 			using (var fs = new StreamWriter(fileName, false, new UTF8Encoding(false)))
-			using (var writer = XmlWriter.Create(fs))
+			using (var writer = XmlWriter.Create(fs, new XmlWriterSettings { ConformanceLevel = ConformanceLevel.Fragment, OmitXmlDeclaration = true }))
 			{
 				Serialize(package, isAddRequest, writer);
 			}
@@ -40,7 +41,7 @@ namespace xe.bit.property.core.Serializers
 		{
 			writer
 				.StartDocument()
-				.Element(isAddRequest ? "AddItemsRequest" : "RemoveItemsRequest")
+				.StartElement(isAddRequest ? "AddItemsRequest" : "RemoveItemsRequest", "http://www.xe.gr")
 				.Element("Package.xeAuthToken", package.XeAuthToken)
 				.Element("Package.schemaVersion", package.SchemaVersion)
 				.Element("Package.id", package.Id)

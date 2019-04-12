@@ -26,6 +26,14 @@ namespace xe.bit.property.core.Utility.Xml
 			return writer;
 		}
 
+		public static XmlWriter StartElement(this XmlWriter writer, string element, string ns)
+		{
+			writer.WriteStartElement(element, ns);
+			writer.NewLine();
+
+			return writer;
+		}
+
 		public static XmlWriter Element(this XmlWriter writer, string element, string value)
 		{
 			if (string.IsNullOrEmpty(value))

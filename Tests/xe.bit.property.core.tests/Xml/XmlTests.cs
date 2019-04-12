@@ -60,7 +60,7 @@ namespace xe.bit.property.core.tests.xml
 			var str = p.Serialize();
 			_out.WriteLine(str);
 
-			Assert.Equal(File.ReadAllText("Fixtures\\AdResidenceAdFixture.txt", Encoding.UTF8), str.Substring(1, str.Length-3));	// Ignore BOM and end CRLF marks.
+			Assert.Equal(File.ReadAllText("Fixtures\\AdResidenceAdFixture.txt", Encoding.UTF8), str);
 		}
 	}
 }
