@@ -30,13 +30,13 @@ namespace xe.bit.property.core.Serializers
 		public virtual void SerializeFinancial(XmlWriter writer, BaseAd ad)
 		{
 			writer
-				.Field("Transaction.price", ad.Price)
-				.Field("Transaction.currency", ad.Currency)
-				.Field("Transaction.frequency", ad.Frequency)
-				.Field("Transaction.type", ad.TransactionType)
-				.Field("Transaction.isOffer", ad.IsOffer)
-				.Field("Transaction.isPromo", ad.IsPromo)
-				.Field("Transaction.isNegotiable", ad.IsNegotiable);
+				.Element("Transaction.price", ad.Price)
+				.Element("Transaction.currency", ad.Currency)
+				.Element("Transaction.frequency", ad.Frequency)
+				.Element("Transaction.type", ad.TransactionType)
+				.Element("Transaction.isOffer", ad.IsOffer)
+				.Element("Transaction.isPromo", ad.IsPromo)
+				.Element("Transaction.isNegotiable", ad.IsNegotiable);
 		}
 
 		public virtual void SerializeAssets(XmlWriter writer, BaseAd ad)
