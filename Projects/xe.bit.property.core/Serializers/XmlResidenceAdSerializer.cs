@@ -19,13 +19,18 @@ namespace xe.bit.property.core.Serializers
 				writer
 					.ElementWithAttributes("Item",
 						new Dictionary<string, string> {{"type", ad.AdType.ToString()}, {"refId", ad.RefId}})
+					.NewLine()
 					.Element("Item.ownerId", ad.OwnerId)
 					.Element("Item.majorPhone", ad.MajorPhone)
 					.Element("Item.departmentOnCategory", ad.DepartmentOnCategory)
 					.Element("Item.otherPhones", ad.OtherPhones, "Item.phone")
 					.CData("Item.internetText", ad.InternetText)
 					.CData("Item.addOnText", ad.AddOnText)
-					.CData("Item.bodyText", ad.BodyText)
+					.CData("Item.bodyText", ad.BodyText);
+
+				SerializeFinancial(writer, ad);
+
+				writer
 					.Field("Item.type", r.ItemType)
 					.Field("Item.subtype", r.SubType)
 					.Field("Item.area", r.Area)
@@ -76,7 +81,6 @@ namespace xe.bit.property.core.Serializers
 					.Field("Item.energy_class", r.EnergyClass);
 
 				SerializeGeo(writer, ad);
-				SerializeFinancial(writer, ad);
 				if (!skipAssets)
 				{
 					SerializeAssets(writer, ad);
