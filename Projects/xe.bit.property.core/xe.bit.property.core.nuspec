@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>xe.bit.property.core</id>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
     <title>xe.bit.property.core</title>
     <authors>Xrysi Eukairia</authors>
     <owners>Xrysi Eukairia</owners>
@@ -10,7 +10,7 @@
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/xe-gr/xe.bit.property.dotnetclient</projectUrl>
     <iconUrl>https://developers.xe.gr/assets/images/favicon.ico</iconUrl>
-    <description>This is a .Net core client that helps you create packages for the xe.gr bit API.</description>
+    <description>This is a .Net core client that helps you create packages for the xe.gr BIT property API.</description>
     <copyright>Copyright 2019 Xrysi Eukairia</copyright>
     <tags>xe.gr</tags>
     <dependencies>
