@@ -21,7 +21,7 @@ namespace xe.bit.property.core.Serializers
 		public string Serialize(IPackage package, bool isAddRequest)
 		{
 			using (var ms = new MemoryStream())
-			using (var writer = XmlWriter.Create(ms))
+			using (var writer = XmlWriter.Create(ms, new XmlWriterSettings { Encoding = new UTF8Encoding(false)}))
 			{
 				Serialize(package, isAddRequest, writer);
 				return new UTF8Encoding(false).GetString(ms.ToArray());

@@ -12,7 +12,7 @@ namespace xe.bit.property.core.Serializers
 		public override string Serialize(BaseAd ad, bool skipAssets)
 		{
 			using (var ms = new MemoryStream())
-			using (var writer = XmlWriter.Create(ms, new XmlWriterSettings { ConformanceLevel = ConformanceLevel.Fragment, OmitXmlDeclaration = true }))
+			using (var writer = XmlWriter.Create(ms, new XmlWriterSettings { ConformanceLevel = ConformanceLevel.Fragment, OmitXmlDeclaration = true, Encoding = new UTF8Encoding(false)}))
 			{
 				var r = (ResidenceAd)ad;
 

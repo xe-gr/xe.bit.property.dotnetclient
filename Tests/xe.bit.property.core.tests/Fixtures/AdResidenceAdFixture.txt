@@ -1,4 +1,4 @@
-﻿﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <AddItemsRequest xmlns="http://www.xe.gr">
 <Package.xeAuthToken>token</Package.xeAuthToken>
 <Package.schemaVersion>1.1</Package.schemaVersion>
@@ -7,7 +7,7 @@
 <Package.trademark>trademark</Package.trademark>
 <Package.skipAssets>False</Package.skipAssets>
 <Package.policy>RENEW ALL STOCK</Package.policy>
-﻿<Item type="re_residence" refId="ref id">
+<Item type="re_residence" refId="ref id">
 <Item.ownerId>owner id</Item.ownerId>
 <Item.majorPhone>major phone</Item.majorPhone>
 <Item.departmentOnCategory>Real Estate</Item.departmentOnCategory>
