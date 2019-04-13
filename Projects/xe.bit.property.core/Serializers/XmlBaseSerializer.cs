@@ -49,7 +49,7 @@ namespace xe.bit.property.core.Serializers
 					.Element("Asset.id", asset.Id)
 					.Element("Asset.fileType", asset.FileType)
 					.Element("Asset.status", asset.Status)
-					.Element("Asset.isPrimary", asset.IsPrimary)
+					.Element("Asset.isPrimary", asset.IsPrimary, true)
 					.Element("Asset.caption", asset.Caption)
 					.Element("Asset.order", asset.Order);
 
