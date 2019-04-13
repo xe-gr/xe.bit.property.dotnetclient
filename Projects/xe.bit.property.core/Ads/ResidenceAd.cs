@@ -53,7 +53,7 @@ namespace xe.bit.property.core.Ads
 		public virtual bool? IsFurnished { get; set; }
 		public virtual string AvailableFrom { get; set; }
 		public virtual string SpacesPlan { get; set; }
-		public virtual bool? SuitableForStudents { get; set; }
+		public virtual bool? IsSuitableForStudents { get; set; }
 		public virtual bool? IsAgentAccepted { get; set; }
 		public virtual bool? HasSemiOpenSpaces { get; set; }
 		public virtual decimal? SemiOpenSpacesArea { get; set; }

@@ -74,7 +74,7 @@ namespace xe.bit.property.core.Serializers
 					.Field("Item.isFurnished", r.IsFurnished, true)
 					.Field("Item.availableFrom", r.AvailableFrom)
 					.Field("Item.spacesPlan", r.SpacesPlan)
-					.Field("Item.isSuitableForStudents", r.IsSuitableForProfessionalUse, true)
+					.Field("Item.isSuitableForStudents", r.IsSuitableForStudents, true)
 					.Field("Item.isAgentAccepted", r.IsAgentAccepted, true)
 					.Field("Item.hasSemiOpenSpaces", r.HasSemiOpenSpaces, true)
 					.Field("Item.semiOpenSpacesArea", r.SemiOpenSpacesArea)
