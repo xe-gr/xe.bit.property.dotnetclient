@@ -46,7 +46,7 @@
 </Field>
 <Field>
 <Name>Item.hasParking</Name>
-<Value>0</Value>
+<Value>1</Value>
 </Field>
 <Field>
 <Name>Item.parkingType</Name>
@@ -69,7 +69,7 @@
 <Asset.id>1</Asset.id>
 <Asset.fileType>jpg</Asset.fileType>
 <Asset.status>ACTIVE</Asset.status>
-<Asset.isPrimary>True</Asset.isPrimary>
+<Asset.isPrimary>1</Asset.isPrimary>
 <Asset.order>1</Asset.order>
 <Asset.uri>image.jpeg</Asset.uri>
 </Asset>

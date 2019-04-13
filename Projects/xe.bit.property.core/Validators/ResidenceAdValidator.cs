@@ -54,19 +54,19 @@ namespace xe.bit.property.core.Validators
 				.GreaterThan(0)
 				.WithMessage(Messages.BedroomsOutOfBound);
 
-			RuleFor(ad => (ad.HasStorage.HasValue ^ ad.StorageArea.HasValue) && (ad.HasStorage.HasValue && !ad.HasStorage.Value && !ad.StorageArea.HasValue))
+			RuleFor(ad => ComplexFlagCheck(ad.HasStorage, ad.StorageArea.HasValue))
 				.Equal(false)
 				.WithMessage(Messages.HasStorageConstraint);
 
-			RuleFor(ad => (ad.HasSemiOpenSpaces.HasValue ^ ad.SemiOpenSpacesArea.HasValue) && (ad.HasSemiOpenSpaces.HasValue && !ad.HasSemiOpenSpaces.Value && !ad.SemiOpenSpacesArea.HasValue))
+			RuleFor(ad => ComplexFlagCheck(ad.HasSemiOpenSpaces, ad.SemiOpenSpacesArea.HasValue))
 				.Equal(false)
 				.WithMessage(Messages.HasSemiOpenSpacesConstraint);
 
-			RuleFor(ad => (ad.HasGarden.HasValue ^ ad.GardenArea.HasValue) && (ad.HasGarden.HasValue && !ad.HasGarden.Value && !ad.GardenArea.HasValue))
+			RuleFor(ad => ComplexFlagCheck(ad.HasGarden, ad.GardenArea.HasValue))
 				.Equal(false)
 				.WithMessage(Messages.HasGardenConstraint);
 
-			RuleFor(ad => (ad.HasTerraceArea.HasValue ^ ad.TerraceArea.HasValue) && (ad.HasTerraceArea.HasValue && !ad.HasTerraceArea.Value && !ad.TerraceArea.HasValue))
+			RuleFor(ad => ComplexFlagCheck(ad.HasTerraceArea, ad.TerraceArea.HasValue))
 				.Equal(false)
 				.WithMessage(Messages.HasTerraceConstraint);
 
@@ -74,7 +74,7 @@ namespace xe.bit.property.core.Validators
 				.Equal(false)
 				.WithMessage(Messages.FloorsConstraint);
 
-			RuleFor(ad => (ad.HasParking.HasValue ^ ad.ParkingType.HasValue) && (ad.HasParking.HasValue && !ad.HasParking.Value && !ad.ParkingType.HasValue))
+			RuleFor(ad => ComplexFlagCheck(ad.HasParking, ad.ParkingType.HasValue))
 				.Equal(false)
 				.WithMessage(Messages.HasParkingConstraint);
 
@@ -89,6 +89,28 @@ namespace xe.bit.property.core.Validators
 				{
 					new AssetsValidator().Validate(assets, context);
 				});
+		}
+
+		/// <summary>
+		/// Checks valid conditions if a flag and a value are specified (for example,
+		/// hasTerrace and TerraceArea). We want both these to have values, but if
+		/// a flag is specified and is false, we do not care of the specified value
+		/// (for example if hasTerrace has a value and is false, this is allowed).
+		/// </summary>
+		/// <returns></returns>
+		private bool ComplexFlagCheck(bool? flag, bool hasValue)
+		{
+			if (flag.HasValue && flag.Value == false && hasValue)
+			{
+				return true;
+			}
+
+			if (!flag.HasValue && hasValue)
+			{
+				return true;
+			}
+
+			return false;
 		}
 	}
 }

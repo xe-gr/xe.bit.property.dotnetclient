@@ -1,4 +1,5 @@
-﻿using xe.bit.property.core.Ads;
+﻿using System;
+using xe.bit.property.core.Ads;
 using xe.bit.property.core.Errors;
 using xe.bit.property.core.Lookups;
 using xe.bit.property.core.Validators;
@@ -128,181 +129,62 @@ namespace xe.bit.property.core.tests.Validators
 		[Theory]
 		[InlineData(true, false, true, 1, null)]
 		[InlineData(false, true, false, 1, null)]
-		[InlineData(false, false, true, 1, Messages.HasStorageConstraint)]
-		[InlineData(true, false, false, 1, null)]
-		[InlineData(false, false, false, 1, null)]
-
+		[InlineData(false, false, true, 1, null)]
+		[InlineData(true, false, false, 1, Messages.HasStorageConstraint)]
+		[InlineData(false, false, false, 1, Messages.HasStorageConstraint)]
 		public void StorageConstraint(bool isStorageFlagNull, bool value, bool isStorageAreaNull, decimal storageArea, string expectedError)
 		{
-			var ad = CreateAd();
-			if (!isStorageFlagNull)
-			{
-				ad.HasStorage = value;
-			}
-
-			if (!isStorageAreaNull)
-			{
-				ad.StorageArea = storageArea;
-			}
-
-			var validator = new ResidenceAdValidator();
-
-			var results = validator.Validate(ad);
-
-			if (string.IsNullOrEmpty(expectedError))
-			{
-				Assert.True(results.IsValid);
-			}
-			else
-			{
-				Assert.False(results.IsValid);
-				Assert.Equal(1, results.Errors.Count);
-				Assert.Equal(expectedError, results.Errors[0].ErrorMessage);
-			}
+			CheckFlagConstraints(isStorageFlagNull, ad => ad.HasStorage = value, isStorageAreaNull,
+				ad => ad.StorageArea = storageArea, expectedError);
 		}
 
 		[Theory]
 		[InlineData(true, false, true, 1, null)]
 		[InlineData(false, true, false, 1, null)]
-		[InlineData(false, false, true, 1, Messages.HasSemiOpenSpacesConstraint)]
-		[InlineData(true, false, false, 1, null)]
-		[InlineData(false, false, false, 1, null)]
-
+		[InlineData(false, false, true, 1, null)]
+		[InlineData(true, false, false, 1, Messages.HasSemiOpenSpacesConstraint)]
+		[InlineData(false, false, false, 1, Messages.HasSemiOpenSpacesConstraint)]
 		public void SemiOpenSpaceConstraint(bool isSemiOpenFlagNull, bool value, bool isSemiOpenSpaceNull, decimal semiOpenSpaceArea, string expectedError)
 		{
-			var ad = CreateAd();
-			if (!isSemiOpenFlagNull)
-			{
-				ad.HasSemiOpenSpaces = value;
-			}
-
-			if (!isSemiOpenSpaceNull)
-			{
-				ad.SemiOpenSpacesArea = semiOpenSpaceArea;
-			}
-
-			var validator = new ResidenceAdValidator();
-
-			var results = validator.Validate(ad);
-
-			if (string.IsNullOrEmpty(expectedError))
-			{
-				Assert.True(results.IsValid);
-			}
-			else
-			{
-				Assert.False(results.IsValid);
-				Assert.Equal(1, results.Errors.Count);
-				Assert.Equal(expectedError, results.Errors[0].ErrorMessage);
-			}
+			CheckFlagConstraints(isSemiOpenFlagNull, ad => ad.HasSemiOpenSpaces = value, isSemiOpenSpaceNull,
+				ad => ad.SemiOpenSpacesArea = semiOpenSpaceArea, expectedError);
 		}
 
 		[Theory]
 		[InlineData(true, false, true, 1, null)]
 		[InlineData(false, true, false, 1, null)]
-		[InlineData(false, false, true, 1, Messages.HasGardenConstraint)]
-		[InlineData(true, false, false, 1, null)]
-		[InlineData(false, false, false, 1, null)]
-
+		[InlineData(false, false, true, 1, null)]
+		[InlineData(true, false, false, 1, Messages.HasGardenConstraint)]
+		[InlineData(false, false, false, 1, Messages.HasGardenConstraint)]
 		public void GardenConstraint(bool isGardenFlagNull, bool value, bool isGardenAreaNull, decimal gardenArea, string expectedError)
 		{
-			var ad = CreateAd();
-			if (!isGardenFlagNull)
-			{
-				ad.HasGarden = value;
-			}
-
-			if (!isGardenAreaNull)
-			{
-				ad.GardenArea = gardenArea;
-			}
-
-			var validator = new ResidenceAdValidator();
-
-			var results = validator.Validate(ad);
-
-			if (string.IsNullOrEmpty(expectedError))
-			{
-				Assert.True(results.IsValid);
-			}
-			else
-			{
-				Assert.False(results.IsValid);
-				Assert.Equal(1, results.Errors.Count);
-				Assert.Equal(expectedError, results.Errors[0].ErrorMessage);
-			}
+			CheckFlagConstraints(isGardenFlagNull, ad => ad.HasGarden = value, isGardenAreaNull,
+				ad => ad.GardenArea = gardenArea, expectedError);
 		}
 
 		[Theory]
 		[InlineData(true, false, true, 1, null)]
 		[InlineData(false, true, false, 1, null)]
-		[InlineData(false, false, true, 1, Messages.HasTerraceConstraint)]
-		[InlineData(true, false, false, 1, null)]
-		[InlineData(false, false, false, 1, null)]
-
+		[InlineData(false, false, true, 1, null)]
+		[InlineData(true, false, false, 1, Messages.HasTerraceConstraint)]
+		[InlineData(false, false, false, 1, Messages.HasTerraceConstraint)]
 		public void TerraceConstraint(bool isTerraceFlagNull, bool value, bool isTerraceAreaNull, decimal terraceArea, string expectedError)
 		{
-			var ad = CreateAd();
-			if (!isTerraceFlagNull)
-			{
-				ad.HasTerraceArea = value;
-			}
-
-			if (!isTerraceAreaNull)
-			{
-				ad.TerraceArea = terraceArea;
-			}
-
-			var validator = new ResidenceAdValidator();
-
-			var results = validator.Validate(ad);
-
-			if (string.IsNullOrEmpty(expectedError))
-			{
-				Assert.True(results.IsValid);
-			}
-			else
-			{
-				Assert.False(results.IsValid);
-				Assert.Equal(1, results.Errors.Count);
-				Assert.Equal(expectedError, results.Errors[0].ErrorMessage);
-			}
+			CheckFlagConstraints(isTerraceFlagNull, ad => ad.HasTerraceArea = value, isTerraceAreaNull,
+				ad => ad.TerraceArea = terraceArea, expectedError);
 		}
 
 		[Theory]
 		[InlineData(true, false, true, ParkingType.CLOSED, null)]
 		[InlineData(false, true, false, ParkingType.CLOSED, null)]
-		[InlineData(false, false, true, ParkingType.CLOSED, Messages.HasParkingConstraint)]
-		[InlineData(true, false, false, ParkingType.CLOSED, null)]
-		[InlineData(false, false, false, ParkingType.CLOSED, null)]
+		[InlineData(false, false, true, ParkingType.CLOSED, null)]
+		[InlineData(true, false, false, ParkingType.CLOSED, Messages.HasParkingConstraint)]
+		[InlineData(false, false, false, ParkingType.CLOSED, Messages.HasParkingConstraint)]
 
 		public void ParkingConstraint(bool isParkingFlagNull, bool value, bool isParkingTypeNull, ParkingType parkingType, string expectedError)
 		{
-			var ad = CreateAd();
-			if (!isParkingFlagNull)
-			{
-				ad.HasParking = value;
-			}
-
-			if (!isParkingTypeNull)
-			{
-				ad.ParkingType = parkingType;
-			}
-
-			var validator = new ResidenceAdValidator();
-
-			var results = validator.Validate(ad);
-
-			if (string.IsNullOrEmpty(expectedError))
-			{
-				Assert.True(results.IsValid);
-			}
-			else
-			{
-				Assert.False(results.IsValid);
-				Assert.Equal(1, results.Errors.Count);
-				Assert.Equal(expectedError, results.Errors[0].ErrorMessage);
-			}
+			CheckFlagConstraints(isParkingFlagNull, ad => ad.HasParking = value, isParkingTypeNull,
+				ad => ad.ParkingType = parkingType, expectedError);
 		}
 
 		[Theory]
@@ -314,15 +196,22 @@ namespace xe.bit.property.core.tests.Validators
 
 		public void FloorsConstraint(bool isFloorsFlagNull, int value, bool isFloorsAreaNull, decimal floorsArea, string expectedError)
 		{
+			CheckFlagConstraints(isFloorsFlagNull, ad => ad.Floors = value, isFloorsAreaNull,
+				ad => ad.FloorsArea = floorsArea, expectedError);
+		}
+
+		private void CheckFlagConstraints(bool isFlagSpecified, Action<ResidenceAd> flagAssignment,
+			bool isValueSpecified, Func<ResidenceAd, object> valueAssignment, string expectedError)
+		{
 			var ad = CreateAd();
-			if (!isFloorsFlagNull)
+			if (!isFlagSpecified)
 			{
-				ad.Floors = value;
+				flagAssignment(ad);
 			}
 
-			if (!isFloorsAreaNull)
+			if (!isValueSpecified)
 			{
-				ad.FloorsArea = floorsArea;
+				valueAssignment(ad);
 			}
 
 			var validator = new ResidenceAdValidator();

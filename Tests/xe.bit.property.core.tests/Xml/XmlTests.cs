@@ -35,7 +35,7 @@ namespace xe.bit.property.core.tests.xml
 				ConstructionType = ConstructionType.NEOKLASIKO,
 				MasterBedrooms = 2,
 				Geo = {AreaId = "59-41", Latitude = 1.1m, Longitude = 2.2m},
-				HasParking = false,
+				HasParking = true,
 				ParkingType = ParkingType.CLOSED
 			};
 
