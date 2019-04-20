@@ -11,6 +11,7 @@
 		public const string TooManyVideos = "Too many video assets - maximum of 1 allowed";
 		public const string MoreThanOnePrimaryAssets = "Only one asset can be set to primary";
 		public const string AddTypeMustBeResidence = "AdType must be re_residence for residence ads";
+		public const string AddTypeMustBeResidenceHoliday = "AdType must be re_residence_hol for holiday residence ads";
 		public const string AreaMustHaveValue = "Area must have a value";
 		public const string AreaMustHavePositiveValue = "Area must have a positive value";
 		public const string LevelMustHaveValue = "Level must have a value";

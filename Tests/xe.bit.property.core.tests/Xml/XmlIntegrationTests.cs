@@ -11,7 +11,7 @@ namespace xe.bit.property.core.tests.Xml
 		//[Fact]	//This is an integration test and should remain commented out in source control.
 		public void IntegrationTest()
 		{
-			var ad = new ResidenceAd
+			var ad = new ResidenceAdHoliday
 			{
 				RefId = "ref id",
 				OwnerId = "owner id",

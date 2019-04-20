@@ -4,13 +4,13 @@ using xe.bit.property.core.Lookups;
 
 namespace xe.bit.property.core.Validators
 {
-	public class ResidenceAdValidator : ResidenceValidator
+	public class ResidenceAdHolidayValidator : ResidenceValidator
 	{
-		public ResidenceAdValidator()
+		public ResidenceAdHolidayValidator()
 		{
 			RuleFor(ad => ad.AdType)
-				.Equal(ItemType.re_residence)
-				.WithMessage(Messages.AddTypeMustBeResidence);
+				.Equal(ItemType.re_residence_hol)
+				.WithMessage(Messages.AddTypeMustBeResidenceHoliday);
 
 			AddOtherRules();
 		}
