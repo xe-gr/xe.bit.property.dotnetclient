@@ -4,10 +4,15 @@ using xe.bit.property.core.Errors;
 
 namespace xe.bit.property.core.Validators
 {
-	public class BaseAdValidator : AbstractValidator<BaseAd>
+	public class BaseResidenceAdValidator : AbstractValidator<BaseResidenceAd>
 	{
-		public BaseAdValidator()
+		public BaseResidenceAdValidator()
 		{
+			RuleFor(ad => ad.RefId)
+				.Cascade(CascadeMode.StopOnFirstFailure)
+				.NotNull().WithMessage(Messages.RefIdCannotBeNullOrEmpty)
+				.NotEmpty().WithMessage(Messages.RefIdCannotBeNullOrEmpty);
+
 			RuleFor(ad => ad.OwnerId)
 				.Cascade(CascadeMode.StopOnFirstFailure)
 				.NotNull().WithMessage(Messages.OwnerIdCannotBeNullOrEmpty)

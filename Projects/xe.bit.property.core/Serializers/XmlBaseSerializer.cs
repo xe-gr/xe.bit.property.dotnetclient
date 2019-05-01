@@ -10,6 +10,11 @@ namespace xe.bit.property.core.Serializers
 {
 	public class XmlBaseSerializer : IAddSerializer
 	{
+		public virtual string Serialize(BaseAd ad)
+		{
+			throw new NotImplementedException();
+		}
+
 		public virtual string Serialize(BaseAd ad, bool skipAssets)
 		{
 			throw new NotImplementedException();
@@ -17,14 +22,21 @@ namespace xe.bit.property.core.Serializers
 
 		public virtual void SerializeGeo(XmlWriter writer, BaseAd ad)
 		{
+			if (!(ad is BaseResidenceAd residenceAd))
+			{
+				return;
+			}
+
+			var geo = residenceAd.Geo;
+
 			writer
-				.Field("Geo.areaId", ad.Geo.AreaId)
-				.Field("Geo.subAreaDescription", ad.Geo.SubAreaDescription)
-				.Field("Geo.streetName", ad.Geo.StreetName)
-				.Field("Geo.streetNumber", ad.Geo.StreetNumber)
-				.Field("Geo.longitude", ad.Geo.Longitude, false)
-				.Field("Geo.latitude", ad.Geo.Latitude, false)
-				.Field("Geo.postcode", ad.Geo.PostCode);
+				.Field("Geo.areaId", geo.AreaId)
+				.Field("Geo.subAreaDescription", geo.SubAreaDescription)
+				.Field("Geo.streetName", geo.StreetName)
+				.Field("Geo.streetNumber", geo.StreetNumber)
+				.Field("Geo.longitude", geo.Longitude, false)
+				.Field("Geo.latitude", geo.Latitude, false)
+				.Field("Geo.postcode", geo.PostCode);
 		}
 
 		public virtual void SerializeFinancial(XmlWriter writer, BaseAd ad)
@@ -41,7 +53,12 @@ namespace xe.bit.property.core.Serializers
 
 		public virtual void SerializeAssets(XmlWriter writer, BaseAd ad)
 		{
-			foreach (var asset in ad.Assets)
+			if (!(ad is BaseResidenceAd residenceAd))
+			{
+				return;
+			}
+
+			foreach (var asset in residenceAd.Assets)
 			{
 				writer
 					.Element("Asset")

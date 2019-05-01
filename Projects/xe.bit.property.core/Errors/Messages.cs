@@ -33,5 +33,8 @@
 		public const string AuthTokenCannotBeNullOrEmpty = "XE auth token cannot be null or empty";
 		public const string SchemaVersionCannotBeNullOrEmpty = "Schema version cannot be null or empty";
 		public const string PackageIdCannotBeNullOrEmpty = "Package ID cannot be null or empty";
+		public const string ItemTypeMustBeParking = "Item type must be set to re_parking";
+		public const string ParkingAreaMustHaveValue = "Parking area must have a value";
+		public const string ParkingLevelMustHaveValue = "Parking level must have a value";
 	}
 }

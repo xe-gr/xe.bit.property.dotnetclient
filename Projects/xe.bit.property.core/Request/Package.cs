@@ -87,19 +87,25 @@ namespace xe.bit.property.core.Request
 				if (SkipAssets.HasValue && !SkipAssets.Value)
 				{
 					foreach (var ad in Ads)
-					foreach (var asset in ad.Assets.Where(x => x.Type == AssetType.IMAGE))
 					{
-						var name = string.IsNullOrEmpty(asset.LocalFileName) ? Path.Combine(directoryWithImages, asset.Uri) : asset.LocalFileName;
+						if (ad is ResidenceAd residenceAd)
+						{
+							foreach (var asset in residenceAd.Assets.Where(x => x.Type == AssetType.IMAGE))
+							{
+								var name = string.IsNullOrEmpty(asset.LocalFileName)
+									? Path.Combine(directoryWithImages, asset.Uri)
+									: asset.LocalFileName;
 
-						try
-						{
-							archive.AddEntry(asset.Uri, name);
+								try
+								{
+									archive.AddEntry(asset.Uri, name);
+								}
+								catch (FileNotFoundException)
+								{
+									throw new InvalidOperationException($"Asset located at [{name}] was not found");
+								}
+							}
 						}
-						catch (FileNotFoundException)
-						{
-							throw new InvalidOperationException($"Asset located at [{name}] was not found");
-						}
-						
 					}
 				}
 

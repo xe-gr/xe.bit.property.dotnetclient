@@ -11,7 +11,6 @@ namespace xe.bit.property.core.Ads
 	public class BaseAd
 	{
 		public virtual ItemType AdType { get; protected set; }
-		public virtual string RefId { get; set; }
 		public virtual string OwnerId { get; set; }
 		public virtual string MajorPhone { get; set; }
 		public virtual string DepartmentOnCategory { get; set; } = "Real Estate";
@@ -26,8 +25,6 @@ namespace xe.bit.property.core.Ads
 		public virtual bool? IsOffer { get; set; }
 		public virtual bool? IsPromo { get; set; }
 		public virtual bool? IsNegotiable { get; set; }
-		public virtual Geo Geo { get; } = new Geo();
-		public virtual List<Asset> Assets { get; } = new List<Asset>();
 		public virtual IAddSerializer Serializer { get; }
 
 		public void AddOtherPhone(string otherPhone)
@@ -40,22 +37,17 @@ namespace xe.bit.property.core.Ads
 			OtherPhones.Clear();
 		}
 
-		public void AddAsset(Asset asset)
-		{
-			Assets.Add(asset);
-		}
-
-		public void ClearAssets()
-		{
-			Assets.Clear();
-		}
-
 		public virtual ValidationResult Validate()
 		{
 			return ValidationChain.ChainValidators(this);
 		}
 
 		public virtual string Serialize(bool skipAssets)
+		{
+			throw new NotImplementedException();
+		}
+
+		public virtual string Serialize()
 		{
 			throw new NotImplementedException();
 		}

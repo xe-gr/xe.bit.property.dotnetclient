@@ -5,19 +5,21 @@ using Xunit;
 
 namespace xe.bit.property.core.tests.Validators
 {
-	public class BaseAdValidatorTests
+	public class BaseResidenceAdValidatorTests
 	{
 		[Theory]
 		[InlineData(FieldToVerify.OwnerId, null, Messages.OwnerIdCannotBeNullOrEmpty)]
 		[InlineData(FieldToVerify.OwnerId, "", Messages.OwnerIdCannotBeNullOrEmpty)]
 		[InlineData(FieldToVerify.MajorPhone, null, Messages.MajorPhoneCannotBeNullOrEmpty)]
 		[InlineData(FieldToVerify.MajorPhone, "", Messages.MajorPhoneCannotBeNullOrEmpty)]
+		[InlineData(FieldToVerify.RefId, null, Messages.RefIdCannotBeNullOrEmpty)]
+		[InlineData(FieldToVerify.RefId, "", Messages.RefIdCannotBeNullOrEmpty)]
 		public void VerifyField(FieldToVerify field, string value, string expected)
 		{
 			var ad = CreateAd();
 			SetValue(ad, value, field);
 
-			var validator = new BaseAdValidator();
+			var validator = new BaseResidenceAdValidator();
 
 			var results = validator.Validate(ad);
 
@@ -26,16 +28,17 @@ namespace xe.bit.property.core.tests.Validators
 			Assert.Equal(expected, results.Errors[0].ErrorMessage);
 		}
 
-		private BaseAd CreateAd()
+		private BaseResidenceAd CreateAd()
 		{
-			return new BaseAd
+			return new BaseResidenceAd
 			{
+				RefId = "ref id",
 				OwnerId = "owner id",
 				MajorPhone = "major phone"
 			};
 		}
 
-		private void SetValue(BaseAd ad, string fieldValue, FieldToVerify field)
+		private void SetValue(BaseResidenceAd ad, string fieldValue, FieldToVerify field)
 		{
 			switch (field)
 			{
@@ -45,12 +48,16 @@ namespace xe.bit.property.core.tests.Validators
 				case FieldToVerify.OwnerId:
 					ad.OwnerId = fieldValue;
 					break;
+				case FieldToVerify.RefId:
+					ad.RefId = fieldValue;
+					break;
 			}
 		}
 
 		public enum FieldToVerify
 		{
 			OwnerId,
+			RefId,
 			MajorPhone
 		}
 	}

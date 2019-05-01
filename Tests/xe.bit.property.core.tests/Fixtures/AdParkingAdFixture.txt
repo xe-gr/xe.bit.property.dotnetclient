@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AddItemsRequest xmlns="http://www.xe.gr">
+<Package.xeAuthToken>token</Package.xeAuthToken>
+<Package.schemaVersion>1.1</Package.schemaVersion>
+<Package.id>id</Package.id>
+<Package.timestamp>2019-04-07T22:10</Package.timestamp>
+<Package.trademark>trademark</Package.trademark>
+<Package.skipAssets>False</Package.skipAssets>
+<Package.policy>RENEW ALL STOCK</Package.policy>
+<Item type="re_parking">
+<Field>
+<Name>Item.area</Name>
+<Value>1000,32</Value>
+</Field>
+<Field>
+<Name>Item.usage</Name>
+<Value>CAR</Value>
+</Field>
+<Field>
+<Name>Item.slots</Name>
+<Value>2</Value>
+</Field>
+<Field>
+<Name>Item.level</Name>
+<Value>LEV_1</Value>
+</Field>
+<Field>
+<Name>Item.hasElectricDoor</Name>
+<Value>True</Value>
+</Field>
+<Field>
+<Name>Item.hasAlarm</Name>
+<Value>True</Value>
+</Field>
+<Field>
+<Name>Item.isAgentAccepted</Name>
+<Value>False</Value>
+</Field>
+</Item>
+</AddItemsRequest>

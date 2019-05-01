@@ -16,12 +16,18 @@ namespace xe.bit.property.core.Utility
 		public static ValidationResult ChainValidators(BaseAd ad)
 		{
 			var baseResults = new BaseAdValidator().Validate(ad);
-			var geoResults = new GeoValidator().Validate(ad.Geo);
-			var assetsValidator = new AssetsValidator().Validate(ad.Assets);
 
-			return new ValidationResult(baseResults.Errors
-				.Union(geoResults.Errors)
-				.Union(assetsValidator.Errors));
+			if (ad is ResidenceAd residenceAd)
+			{
+				var geoResults = new GeoValidator().Validate(residenceAd.Geo);
+				var assetsValidator = new AssetsValidator().Validate(residenceAd.Assets);
+
+				return new ValidationResult(baseResults.Errors
+					.Union(geoResults.Errors)
+					.Union(assetsValidator.Errors));
+			}
+
+			return baseResults;
 		}
 
 		public static ValidationResult Chain(ValidationResult result1, ValidationResult result2)

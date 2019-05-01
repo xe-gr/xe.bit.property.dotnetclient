@@ -62,5 +62,34 @@ namespace xe.bit.property.core.tests.xml
 
 			Assert.Equal(File.ReadAllText("Fixtures\\AdResidenceAdFixture.txt", Encoding.UTF8), str);
 		}
+
+		[Fact]
+		public void VerifyPackageWithParkingAdXmlSerialization()
+		{
+			var ad = new ParkingAd
+			{
+				OwnerId = "owner id",
+				MajorPhone = "major phone",
+				Area = 1000.32m,
+				Level = ParkingLevel.LEV_1,
+				HasAlarm = true,
+				HasElectricDoor = true,
+				IsAgentAccepted = false,
+				Slots = 2,
+				Usage = Usage.CAR
+			};
+
+			var p = Package.CreatePackage("token", "id", PackagePolicy.RENEW_ALL_STOCK, true)
+				.AddClassified(ad);
+
+			p.Timestamp = new DateTime(2019, 04, 07, 22, 10, 00, DateTimeKind.Utc);
+			p.Trademark = "trademark";
+			p.SkipAssets = false;
+
+			var str = p.Serialize();
+			_out.WriteLine(str);
+
+			Assert.Equal(File.ReadAllText("Fixtures\\AdParkingAdFixture.txt", Encoding.UTF8), str);
+		}
 	}
 }

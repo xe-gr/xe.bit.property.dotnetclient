@@ -7,7 +7,7 @@ using xe.bit.property.core.Validators;
 
 namespace xe.bit.property.core.Ads
 {
-	public class ResidenceAd : BaseAd
+	public class ResidenceAd : BaseResidenceAd
 	{
 		public override ItemType AdType { get; protected set; } = Lookups.ItemType.re_residence;
 		public virtual ResidenceItemType ItemType { get; set; }

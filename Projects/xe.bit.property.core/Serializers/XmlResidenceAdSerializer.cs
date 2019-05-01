@@ -40,7 +40,7 @@ namespace xe.bit.property.core.Serializers
 
 			writer
 				.ElementWithAttributes("Item",
-					new Dictionary<string, string> { { "type", ad.AdType.ToString() }, { "refId", ad.RefId } })
+					new Dictionary<string, string> { { "type", ad.AdType.ToString() }, { "refId", r.RefId } })
 				.NewLine()
 				.Element("Item.ownerId", ad.OwnerId)
 				.Element("Item.majorPhone", ad.MajorPhone)
