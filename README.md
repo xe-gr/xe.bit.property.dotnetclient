@@ -70,4 +70,4 @@ client.PostToBit("d:\\packed.zip", "batchImportTest@gmail.com", "999999", true);
 ```
 
 # Caution: Work in progress
-At the moment the library can only be used to create and send packages that include residence and vacation residence property classifieds. We are working to also include professional property, parking and land property ads.
+At the moment the library can only be used to create and send packages that include parking, residence and vacation residence property classifieds. We are working to also include professional property, and land property ads.
