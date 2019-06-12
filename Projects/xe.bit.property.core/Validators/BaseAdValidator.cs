@@ -17,6 +17,11 @@ namespace xe.bit.property.core.Validators
 				.Cascade(CascadeMode.StopOnFirstFailure)
 				.NotNull().WithMessage(Messages.MajorPhoneCannotBeNullOrEmpty)
 				.NotEmpty().WithMessage(Messages.MajorPhoneCannotBeNullOrEmpty);
-		}
+
+            RuleFor(ad => ad.Price)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotNull().WithMessage(Messages.PriceCannotBeNullOrEmpty)
+                .NotEmpty().WithMessage(Messages.PriceCannotBeNullOrEmpty);
+        }
 	}
 }

@@ -11,6 +11,7 @@
 <Item.ownerId>owner id</Item.ownerId>
 <Item.majorPhone>major phone</Item.majorPhone>
 <Item.departmentOnCategory>Real Estate</Item.departmentOnCategory>
+<Transaction.price>1</Transaction.price>
 <Transaction.type>SELL.NORMAL</Transaction.type>
 <Field>
 <Name>Item.type</Name>

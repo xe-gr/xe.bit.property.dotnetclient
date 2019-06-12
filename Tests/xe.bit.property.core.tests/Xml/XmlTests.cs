@@ -36,7 +36,8 @@ namespace xe.bit.property.core.tests.xml
 				MasterBedrooms = 2,
 				Geo = {AreaId = "59-41", Latitude = 1.1m, Longitude = 2.2m},
 				HasParking = true,
-				ParkingType = ParkingType.CLOSED
+				ParkingType = ParkingType.CLOSED,
+                Price = 1
 			};
 
 			ad.AddAsset(new Asset
@@ -66,17 +67,18 @@ namespace xe.bit.property.core.tests.xml
 		[Fact]
 		public void VerifyPackageWithParkingAdXmlSerialization()
 		{
-			var ad = new ParkingAd
-			{
-				OwnerId = "owner id",
-				MajorPhone = "major phone",
-				Area = 1000.32m,
-				Level = ParkingLevel.LEV_1,
-				HasAlarm = true,
-				HasElectricDoor = true,
-				IsAgentAccepted = false,
-				Slots = 2,
-				Usage = Usage.CAR
+            var ad = new ParkingAd
+            {
+                OwnerId = "owner id",
+                MajorPhone = "major phone",
+                Area = 1000.32m,
+                Level = ParkingLevel.LEV_1,
+                HasAlarm = true,
+                HasElectricDoor = true,
+                IsAgentAccepted = false,
+                Slots = 2,
+                Usage = Usage.CAR,
+                Price = 1
 			};
 
 			var p = Package.CreatePackage("token", "id", PackagePolicy.RENEW_ALL_STOCK, true)

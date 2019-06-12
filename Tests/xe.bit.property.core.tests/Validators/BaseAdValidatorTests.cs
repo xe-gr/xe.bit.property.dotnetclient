@@ -26,7 +26,23 @@ namespace xe.bit.property.core.tests.Validators
 			Assert.Equal(expected, results.Errors[0].ErrorMessage);
 		}
 
-		private BaseAd CreateAd()
+        [Fact]
+        public void VerifyPriceField()
+        {
+            var ad = CreateAd();
+            ad.MajorPhone = "phone";
+            ad.OwnerId = "owner id";
+
+            var validator = new BaseAdValidator();
+
+            var results = validator.Validate(ad);
+
+            Assert.False(results.IsValid);
+            Assert.Equal(1, results.Errors.Count);
+            Assert.Equal(Messages.PriceCannotBeNullOrEmpty, results.Errors[0].ErrorMessage);
+        }
+
+        private BaseAd CreateAd()
 		{
 			return new BaseAd
 			{
@@ -46,6 +62,8 @@ namespace xe.bit.property.core.tests.Validators
 					ad.OwnerId = fieldValue;
 					break;
 			}
+
+            ad.Price = 1;
 		}
 
 		public enum FieldToVerify
